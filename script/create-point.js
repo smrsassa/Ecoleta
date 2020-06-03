@@ -45,3 +45,45 @@ function getCities ( event ) {
 
 document.querySelector("select[name=uf]")
         .addEventListener("change", getCities )
+
+
+// Itens de coleta
+// todos os li's
+
+const itensColeta = document.querySelectorAll(".itens-grid li")
+
+for ( item of itensColeta ) {
+  document.addEventListener("click", handleSelectedItem)
+}
+
+const collectedItems = document.querySelector("input[name=itens]")
+
+let selectedItens = []
+
+function handleSelectedItem() {
+
+  const itemLi = event.target
+  // Add ou remover uma classe
+  itemLi.classList.toggle("selected")
+
+  const itemId = itemLi.dataset.id
+
+  //verificar itens selecionados
+  const alreadySelected = selectedItens.findIndex( (item) => {
+    return item == itemId
+  })
+
+  if ( alreadySelected >= 0 ) {
+    const filterItems = selectedItens.filter( (item) => {
+      return item != itemId
+    })
+
+      selectedItens = filterItems
+
+  } else {
+    selectedItens.push(itemId)
+  }
+
+  collectedItems.value = selectedItens
+
+}
