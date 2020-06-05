@@ -1,31 +1,20 @@
-<!DOCTYPE html>
-<html lang="pt_br">
-<head>
+{% extends "layout.html" %}
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resultado da pesquisa</title>
+{% set pageId = "page-search" %}
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+  {% block title %}
+    <title>Resultado da pesquisa</title>
+  {% endblock title %}
 
-  <link rel="stylesheet" href="/styles/main.css">
-  <link rel="stylesheet" href="/styles/search.css">
-  <link rel="stylesheet" href="/styles/responsive.css">
+  {% block styles %}
+    <link rel="stylesheet" href="/styles/search.css">
+  {% endblock styles %}
 
-</head>
-<body>
+  {# id="page-search" #}
 
-  <div id="page-search">
-
-    <header>
-
-      <img src="/dist/extras-aula-1/icones/logo.svg" alt="Logomarca">
-      <a href="/index.html">
-        <span></span>
-        Voltar para a home
-      </a>
-
-    </header>
+  {% block content %}
+    
+    {% include "partials/page-header.html" %}
 
     <main>
 
@@ -56,10 +45,4 @@
       </div>
 
     </main>
-
-  </div>
-
-  <script src="/script/create-point.js"></script>
-
-</body>
-</html>
+  {% endblock content %}

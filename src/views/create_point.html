@@ -1,31 +1,18 @@
-<!DOCTYPE html>
-<html lang="pt_br">
-<head>
+{% extends "layout.html" %}
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ponto de coleta</title>
+{% set pageId = "page-create-point" %}
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+  {% block title %}
+    <title>Ponto de coleta</title>
+  {% endblock title %}
 
-  <link rel="stylesheet" href="/styles/main.css">
-  <link rel="stylesheet" href="/styles/create_point.css">
-  <link rel="stylesheet" href="/styles/responsive.css">
+  {% block styles %}
+    <link rel="stylesheet" href="/styles/create_point.css">
+  {% endblock styles %}
 
-</head>
-<body>
-
-  <div id="page-create-point">
-
-    <header>
-
-      <img src="/dist/extras-aula-1/icones/logo.svg" alt="Logomarca">
-      <a href="/index.html">
-        <span></span>
-        Voltar para a home
-      </a>
-
-    </header>
+  {# id="page-create-point"> #}
+  {% block content %}
+    {% include "partials/page-header.html" %}
 
     <form action="">
 
@@ -37,9 +24,15 @@
           <h2>Dados da entidade</h2>
         </legend>
 
-        <div class="field">
-          <label for="name">Nome da entidade</label>
-          <input type="text" name="name" required>
+        <div class="field-group">
+          <div class="field">
+            <label for="name">Nome da entidade</label>
+            <input type="text" name="name" required>
+          </div>
+          <div class="field">
+            <label for="name">Imagem da entidade</label>
+            <input type="url" name="image" placeholder="http://" required>
+          </div>
         </div>
 
         <div class="field-group">
@@ -77,6 +70,7 @@
       <fieldset>
         <legend>
           <h2>Itens de coleta</h2>
+          <span>Selecione um ou mais itens a baixo</span>
         </legend>
 
         <div class="itens-grid">
@@ -118,10 +112,9 @@
       <button type="submit">Cadastrar ponto de coleta</button>
 
     </form>
+  {% endblock content %}
 
-  </div>
 
-  <script src="/script/create-point.js"></script>
-
-</body>
-</html>
+  {% block scripts %}
+    <script src="/script/create-point.js"></script>
+  {% endblock scripts %}

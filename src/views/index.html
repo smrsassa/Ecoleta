@@ -1,71 +1,47 @@
-<!DOCTYPE html>
-<html lang="pt_br">
-<head>
+{% extends "layout.html" %}
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ecoleta</title>
+{% set pageId = "page-home" %}
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="/styles/main.css">
+  {% block styles %}
   <link rel="stylesheet" href="/styles/home.css">
   <link rel="stylesheet" href="/styles/modal.css">
-  <link rel="stylesheet" href="/styles/responsive.css">
+  {% endblock styles %}
 
-</head>
-<body>
+  {# id="page-home" #}
 
-  <div id="page-home">
-
+  {% block content %}
     <div class="content">
 
-      <header>
+    <header>
 
-        <img src="/dist/extras-aula-1/icones/logo.svg" alt="Logomarca">
-        <a href="/create_point.html">
-          <span></span>
-          Cadastre um ponto de coleta
-        </a>
+      <img src="/dist/extras-aula-1/icones/logo.svg" alt="Logomarca">
+      <a href="/create_point">
+        <span></span>
+        Cadastre um ponto de coleta
+      </a>
 
-      </header>
+    </header>
 
-      <main>
+    <main>
 
-        <h1>Seu marketplace de coleta de residuos</h1>
+      <h1>{{ title }}</h1>
 
-        <p>Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente</p>
+      <p>Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente</p>
 
-        <a href="#">
-          <span></span>
-          <strong>Pesquisar pontos de coleta</strong>
-        </a>
+      <a href="#">
+        <span></span>
+        <strong>Pesquisar pontos de coleta</strong>
+      </a>
 
-      </main>
+    </main>
 
     </div>
+  {% endblock content %}
 
-  </div>
+  {% block modal %}
+    {% include "partials/modal.html" %}
+  {% endblock modal %}
 
-  <div id="modal" class="hide">
-    <div class="content">
-      <div class="header">
-        <h1>Pontos de Coleta</h1>
-        <a href="#">Fechar</a>
-      </div>
-      <form action="/search.html">
-        <label for="search">Cidade</label>
-        <div class="search field">
-          <input type="text" name="search" placeholder="Pesquise por cidade">
-          <button>
-            <img src="dist/extras-aula-1/icones/search.svg" alt="Buscar">
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <script src="/script/index.js"></script>
-
-</body>
-</html>
+  {% block scripts %}
+    <script src="/script/index.js"></script>
+  {% endblock scripts %}
